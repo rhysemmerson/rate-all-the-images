@@ -7,7 +7,7 @@
  * Date: 16/8/17
  * Time: 12:20 PM
  */
-class UsersTableSeeder
+class UsersTableSeeder extends \Illuminate\Database\Seeder
 {
     /**
      * Run the database seeds.
@@ -22,8 +22,7 @@ class UsersTableSeeder
             'email' => 'jon@got.com',
             'password' => bcrypt('secret'),
             'created_at' => date("Y-m-d H:i:s", time()),
-            'updated_at' => date("Y-m-d H:i:s", time()),
-            'verified' => 1,
+            'updated_at' => date("Y-m-d H:i:s", time())
         ]);
     }
 }

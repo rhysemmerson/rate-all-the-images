@@ -37,3 +37,9 @@ $factory->define(App\Image::class, function(Faker\Generator $faker) use ($random
         'image_url' => $randomImage()
     ];
 });
+
+$factory->define(App\Rating::class, function(Faker\Generator $faker) {
+    return [
+        'rating' => rand(0, 100) > 50
+    ];
+});

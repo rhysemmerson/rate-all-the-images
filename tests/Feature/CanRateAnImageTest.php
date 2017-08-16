@@ -27,7 +27,7 @@ class CanRateAnImageTest extends TestCase
         // act
         $response = $this
             ->actingAs($user, 'api')
-            ->json('POST', '/ratings', [
+            ->json('POST', '/api/ratings', [
                 'image_id' => $image['id'],
                 'rating' => 1
             ]);
@@ -55,14 +55,14 @@ class CanRateAnImageTest extends TestCase
 
         $rating1 = $this
             ->actingAs($user, 'api')
-            ->json('POST', '/ratings', [
+            ->json('POST', '/api/ratings', [
                 'image_id' => $image->id,
                 'rating' => 1
             ]);
 
         $rating2 = $this
             ->actingAs($user, 'api')
-            ->json('POST', '/ratings', [
+            ->json('POST', '/api/ratings', [
                 'image_id' => $image->id,
                 'rating' => 1
             ]);
@@ -83,12 +83,15 @@ class CanRateAnImageTest extends TestCase
     public function testUserCannotSeeOthersRatings() {
         $user1 = factory(User::class)->create();
         $user2 = factory(User::class)->create();
-        $ratings = factory(Rating::class, 5)->create([
-            'user_id' => $user1->id
-        ]);
+        $ratings = factory(Image::class, 5)->create()->map(function($image) use ($user1) {
+            return factory(Rating::class)->create([
+                'image_id' => $image->id,
+                'user_id' => $user1->id
+            ]);
+        });
 
         /* get ratings as user2 */
-        $response = $this->actingAs($user2, 'api')->json('GET', '/ratings');
+        $response = $this->actingAs($user2, 'api')->json('GET', '/api/ratings');
         $data = $response->json();
 
         $ratingIds = $ratings->pluck('id');

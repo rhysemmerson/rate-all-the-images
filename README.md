@@ -8,6 +8,10 @@
 
     php artisan serve
 
+## Run testsuite
+
+    vendor/bin/phpunit
+
 ## API
 * uses session to authenticate requests
  

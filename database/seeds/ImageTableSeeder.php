@@ -18,7 +18,7 @@ class ImageTableSeeder extends Seeder
     }
 
     public function fromPixabay($file) {
-        $response = json_decode(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . $file));
+        $response = json_decode(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . $file), true);
 
         collect($response['hits'])
             ->each(function($image) {

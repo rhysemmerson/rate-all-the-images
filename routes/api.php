@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+/* ratings */
+Route::get('/ratings', 'ApiController@ratingsGet')->name('ratings');
+Route::post('/ratings', 'ApiController@ratingsPost');
+
+/* images */
+Route::get('/images/random', 'ApiController@imagesRandomGet')->name('randomImage');

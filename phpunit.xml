@@ -8,6 +8,10 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false">
+
+    <php>
+        <env name="DB_CONNECTION" value="sqlite_testing"/>
+    </php>
     <testsuites>
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
