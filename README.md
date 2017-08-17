@@ -3,11 +3,15 @@
 ## Installation
     
     composer install
+    
+Create .env file and be sure to set APP_URL correctly
 
-## Run
+The app uses a sqlite db by default so no other setup is required
 
-    php artisan serve
+then run
 
+    php artisan migrate --seed
+    
 ## Run testsuite
 
     vendor/bin/phpunit

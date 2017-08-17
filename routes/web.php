@@ -16,3 +16,7 @@ Route::middleware('auth')->get('/app/{view?}', function () {
 });
 
 Auth::routes();
+
+Route::get('/', function() {
+    return redirect('/app');
+});
