@@ -4,9 +4,7 @@
     
     composer install
     
-Create .env file and be sure to set APP_URL correctly
-
-The app uses a sqlite db by default so no other setup is required
+Create .env file and be sure to set APP_URL correctly. The app uses a sqlite db by default so no other setup is required
 
 then run
 
@@ -30,7 +28,8 @@ GET:
         "data": [
             {
                 "id": <integer>,
-                "image_id": <integer>
+                "image_id": <integer>,
+                "image": <Image>
             }
         ]
     }
