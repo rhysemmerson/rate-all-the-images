@@ -26,7 +26,7 @@ class CanRateAnImageTest extends TestCase
 
         // act
         $response = $this
-            ->actingAs($user, 'api')
+            ->actingAs($user)
             ->json('POST', '/api/ratings', [
                 'image_id' => $image['id'],
                 'rating' => 1
@@ -54,14 +54,14 @@ class CanRateAnImageTest extends TestCase
         /* attempt to rate the image twice */
 
         $rating1 = $this
-            ->actingAs($user, 'api')
+            ->actingAs($user)
             ->json('POST', '/api/ratings', [
                 'image_id' => $image->id,
                 'rating' => 1
             ]);
 
         $rating2 = $this
-            ->actingAs($user, 'api')
+            ->actingAs($user)
             ->json('POST', '/api/ratings', [
                 'image_id' => $image->id,
                 'rating' => 1
@@ -91,7 +91,7 @@ class CanRateAnImageTest extends TestCase
         });
 
         /* get ratings as user2 */
-        $response = $this->actingAs($user2, 'api')->json('GET', '/api/ratings');
+        $response = $this->actingAs($user2)->json('GET', '/api/ratings');
         $data = $response->json();
 
         $ratingIds = $ratings->pluck('id');

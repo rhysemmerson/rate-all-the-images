@@ -7,3 +7,64 @@
 
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+body {
+  background: #333;
+}
+
+.rate-image {
+  height: 100vh;
+  padding-top: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* RateImage */
+
+.RateImage {
+  .btn {
+    margin-right: 1rem;
+  }
+}
+
+.RateImage__image {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.RateImage__image__img {
+  width: auto;
+  height: 350px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Ratings */
+
+.Ratings {
+  padding-top: 7rem;
+}
+.Ratings__list {
+  display: flex;
+  flex-flow: row wrap;
+
+  justify-content: space-between;
+}
+.Ratings__image-col {
+  display: flex;
+  justify-content: center;
+
+  padding: 3rem;
+
+  flex-basis: 33.33%;
+
+  .RateImage__image__img {
+    width: 100%;
+    height: auto;
+  }
+}

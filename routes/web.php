@@ -11,7 +11,7 @@
 |
 */
 
-Route::middleware('auth')->get('/', function () {
+Route::middleware('auth')->get('/app/{view?}', function () {
     return view('app');
 });
 

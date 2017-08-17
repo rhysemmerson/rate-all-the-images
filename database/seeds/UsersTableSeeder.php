@@ -24,5 +24,13 @@ class UsersTableSeeder extends \Illuminate\Database\Seeder
             'created_at' => date("Y-m-d H:i:s", time()),
             'updated_at' => date("Y-m-d H:i:s", time())
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'Rhys',
+            'email' => 'rhys@mail.com',
+            'password' => bcrypt('secret'),
+            'created_at' => date("Y-m-d H:i:s", time()),
+            'updated_at' => date("Y-m-d H:i:s", time())
+        ]);
     }
 }

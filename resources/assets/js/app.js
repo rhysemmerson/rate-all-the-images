@@ -13,11 +13,11 @@ import Menu from "./components/Menu"
 require('./bootstrap')
 
 ReactDOM.render((
-    <Router>
+    <Router basename="/app">
         <div>
             <Menu>
-                <Link to="/">Home</Link>
-                <Link to="/ratings">My Ratings</Link>
+                <Link to="/">Rate a Meow</Link>
+                <Link to="/ratings">My Meows</Link>
             </Menu>
             <Route exact path="/" component={RateImage} />
             <Route exact path="/ratings" component={Ratings} />

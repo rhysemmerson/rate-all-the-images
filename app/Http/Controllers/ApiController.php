@@ -10,6 +10,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Image;
 use Illuminate\Http\Request;
 use App\User;
 use App\Rating;
@@ -18,14 +19,14 @@ class ApiController extends Controller
 {
     public function __construct()
     {
-
+        $this->middleware('auth:web');
     }
 
     public function ratingsGet() {
         $user = \Auth::user();
 
         $response = [
-            'data' => $user->ratings()->get()
+            'data' => $user->ratings()->with('image')->orderby('created_at', 'desc')->get()
         ];
 
         return response()->json($response);
@@ -64,7 +65,25 @@ class ApiController extends Controller
     }
 
     public function imagesRandomGet() {
+        $user = \Auth::user();
 
+        $imageIds = Image::whereNotIn(
+            'id',
+            $user->ratings()->get()->pluck('image_id')->toArray()
+        )->pluck('id');
+
+        if ($imageIds->isEmpty()) {
+            return response()
+                ->json([
+                    'error' => 'no-more-images',
+                    'message' => "Congratulations! you have rated all the images"
+                ]);
+        }
+
+        /* get a random image */
+        $image = Image::find($imageIds->random());
+
+        return response()->json($image);
     }
 
 }

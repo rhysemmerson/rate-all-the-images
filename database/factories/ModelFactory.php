@@ -11,13 +11,8 @@
 |
 */
 
-$images = json_decode(file_get_contents(database_path('seeds/data/pixabay_landscapes.json')), true);
-
-$randomImage = function() use ($images) {
-    $image = collect($images['hits'])
-        ->random();
-
-    return $image['webformatURL'];
+$randomImage = function() {
+    return collect(Storage::disk('local')->allFiles())->random();
 };
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
